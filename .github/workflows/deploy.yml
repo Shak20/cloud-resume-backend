@@ -1,0 +1,30 @@
+name: Deploy SAM Backend
+
+on:
+  push:
+    branches:
+      - main  # Change if your branch is named differently
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Install SAM CLI
+        run: |
+          pip install aws-sam-cli
+
+      - name: Deploy SAM stack
+        run: |
+          sam build
+          sam deploy --stack-name cloud-resume-backend --no-confirm-changeset --capabilities CAPABILITY_IAM
