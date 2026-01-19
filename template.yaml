@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Cloud Resume Challenge Visitor Counter
+
+Globals:
+  Function:
+    Runtime: python3.11
+    Timeout: 10
+
+Resources:
+
+  VisitorTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-resume-visitors
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  VisitorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda/
+      Handler: app.lambda_handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref VisitorTable
+      Events:
+        VisitorApi:
+          Type: Api
+          Properties:
+            Path: /visitor
+            Method: get
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/visitor"
