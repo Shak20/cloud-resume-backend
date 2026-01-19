@@ -32,4 +32,4 @@ jobs:
       - name: Deploy SAM stack
         run: |
           sam build
-          sam deploy --stack-name cloud-resume-backend --no-confirm-changeset --capabilities CAPABILITY_IAM
+          sam deploy --stack-name cloud-resume-backend --no-confirm-changeset --capabilities CAPABILITY_IAM --no-fail-on-empty-changeset
