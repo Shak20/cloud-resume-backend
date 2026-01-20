@@ -24,7 +24,7 @@ Resources:
   VisitorFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: lambda/
+      CodeUri: src/
       Handler: app.lambda_handler
       Policies:
         - DynamoDBCrudPolicy:
