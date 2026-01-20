@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shafaq Hasan Resume</title>
+  <meta name="description" content="Resume for the Cloud Resume Challenge. Fill in your details and host this static page in S3." />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed; /* purple-600 */
+      --glass: rgba(255,255,255,0.03);
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #071029 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+    .container{
+      width:100%;
+      max-width:980px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:12px;
+      padding:28px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      display:grid;
+      grid-template-columns: 1fr 340px;
+      gap:24px;
+    }
+
+    header .name{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-0.4px;
+      margin:0 0 6px 0;
+    }
+    header .title{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 16px 0;
+    }
+
+    .summary{
+      color:var(--muted);
+      line-height:1.5;
+      margin-bottom:18px;
+    }
+
+    .cta-list{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.02);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:#dbeafe;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    nav.side{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .side .box{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:10px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    h3.section-title{
+      margin:0 0 10px 0;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:0.6px;
+      text-transform:uppercase;
+    }
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px}
+
+    .experience{display:flex;flex-direction:column;gap:18px}
+    .job{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+    .job .row{display:flex;justify-content:space-between;gap:12px}
+    .job .company{font-weight:700}
+    .job .dates{color:var(--muted);font-size:13px}
+
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .project{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+    }
+
+    /* Print-friendly */
+    @media print{
+      body{background:white;color:black}
+      .card{box-shadow:none;border:none;background:white}
+    }
+
+    /* utility */
+    a.inline{color:var(--accent);text-decoration:none;font-weight:600}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="main">
+      <!-- Left column: main content -->
+      <div>
+        <header>
+          <h1 class="name">Shafaq Hasan</h1>
+          <div class="title">Senior Noc Engineer</div>
+        </header>
+
+        <p class="summary" id="summary">Certified AWS Solutions Architect Associate (SAA-c03, earned 2025) and Senior NOC engineer with 8+ years of IT and mission-critical network and systems operations experience. Proven expertise in monitoring, troubleshooting, and maintaining high-availability environments across on-prem and hybrid infrastructures. Deep practical knowledge of AWS core services (EC2, VPC, S3, IAM, CloudWatch, Lambda, RDS) gained through real-world labs and certification projects. Seeking to transition into a Junior Cloud Engineer role to design, deploy, and support scalable, secure AWS cloud solutions that drive operational efficiency and cost optimization. </p>
+
+        <section aria-labelledby="experience">
+          <h3 class="section-title" id="experience">Experience</h3>
+          <div class="experience">
+            <!-- Repeat .job blocks for each role -->
+            <article class="job">
+              <div class="row">
+                <div>
+                  <div class="company">SS&C — <span class="muted">Sr. NOC Engineer</span></div>
+                  <div class="muted">Chicago, IL</div>
+                </div>
+                <div class="dates">Jan 2022 — Present</div>
+              </div>
+              <ul>
+                <li>Monitored overall network performance and health using Logic Monitor and Grafana</li>
+                <li>Tracked and analyzed server health and performance across SS&C’s enterprise environment</li>
+				<li>Responded to alerts in real time, diagnosing issues and escalating according to SLA standards</li>
+				<li>Maintained 24/7 availability through rotating on-call shifts to support critical operations</li>
+				<li>Coordinated with engineers, system admins, and third-party vendors to resolve incidents quickly</li>
+				
+              </ul>
+            </article>
+			 <article class="job">
+              <div class="row">
+                <div>
+                  <div class="company">SAGIN LLC — <span class="muted">Systems Analyst</span></div>
+                  <div class="muted">Chicago, IL</div>
+                </div>
+                <div class="dates">Aug 2019 - Oct 2021</div>
+              </div>
+              <ul>
+                <li>Perform implementation and upgrades of information systems to meet business requirements and user needs</li>
+                <li>Implementing and communicating best practices to users to ensure the ease of maintenance and system performance</li>
+				<li>Collaborating with other systems analysts, engineers, and IT team to resolve issues and ensure solutions are viable and consistent</li>
+				<li>Monitor and address support tickets and network alerts via Fresh Service to ensure the continuous operation for all clients and endpoint functionality</li>
+				
+              </ul>
+            </article>
+			</article>
+			 <article class="job">
+              <div class="row">
+                <div>
+                  <div class="company">Chicago Teachers Pension Fund — <span class="muted">IT Infrastructure Service Desk Intern</span></div>
+                  <div class="muted">Chicago, IL</div>
+                </div>
+                <div class="dates">Jan 2018 - May 2019</div>
+              </div>
+              <ul>
+                <li>Tier 1 Support for Microsoft Windows 7/10 Environment, in-house applications, and Apple iPad devices</li>
+                <li>Administer, monitor, and manage McAfee ePO 5.5; deploy agents and VirusScan 8.8 to desktops and laptops, recover user encryption tokens, and respond to alerts regarding possible malware for additional analysis</li>
+				<li>Created OS images and deployed/reimaged desktops and notebooks within organization using Clonezilla server</li>
+				<li>Supported the operation and configuration of all audio/video equipment in meeting rooms, and Boardroom prior to, and during all meetings in the organization as well as assist Board of Trustees with technical support</li>
+				
+              </ul>
+            </article>
+
+          </div>
+        </section>
+
+        <section aria-labelledby="projects" style="margin-top:18px">
+          <h3 class="section-title" id="projects">Projects</h3>
+          <div class="projects">
+            <div class="project">
+              <strong>Cloud Resume Challenge</strong>
+              <p class="muted">Static resume hosted in S3 with CloudFront, Infrastructure as Code, and CI to update visitor count in DynamoDB.</p>
+              <p style="margin:0.4rem 0 0 0">Live: <a class="inline" href="#">https://your-domain.example</a></p>
+            </div>
+
+            <div class="project">
+              <strong>Project Title</strong>
+              <p class="muted">Short description and links to repo / demo.</p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="education" style="margin-top:18px">
+          <h3 class="section-title" id="education">Education</h3>
+          <div>
+            <div><strong>Bachelor of Science in Network Engineering and Security</strong> — DePaul University</div>
+            <div class="muted">June 2019</div>
+          </div>
+        </section>
+
+        <footer>
+          <div>Made for the <strong>Cloud Resume Challenge</strong>. Tip: keep this page small & static for easy S3 hosting. Add a small serverless function to count visitors (DynamoDB + API Gateway + Lambda) if you want to complete the challenge requirements.</div>
+        </footer>
+      </div>
+
+      <!-- Right column: sidebar -->
+      <aside class="side" aria-label="Contact and skills">
+        <div class="box" role="region" aria-labelledby="contact">
+          <h3 class="section-title" id="contact">Contact</h3>
+          <p style="margin:0 0 8px 0"><strong>Your Name</strong></p>
+          <p class="muted" style="margin:0 0 6px 0">Email: <a class="inline" href="mailto:shafaq.hasan96@gmail.com">shafaq.hasan96@gmail.com</a></p>
+          <p class="muted" style="margin:0 0 6px 0">LinkedIn: <a class="inline" href="https://www.linkedin.com/in/shafaq-hasan/">linkedin.com/in/shafaq-hasan/</a></p>
+        </div>
+
+        <div class="box" role="region" aria-labelledby="skills">
+          <h3 class="section-title" id="skills">Skills</h3>
+          <div class="skills">
+            <span class="skill">AWS S3</span>
+            <span class="skill">CloudFront</span>
+            <span class="skill">Lambda</span>
+            <span class="skill">DynamoDB</span>
+            <span class="skill">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="box" role="region" aria-labelledby="certs">
+          <h3 class="section-title" id="certs">Certifications</h3>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>AWS Certified Solutions Architect — Associate (SAA-C03, earned 2025)</li>
+          </ul>
+        </div>
+
+        <div class="box" role="region" aria-labelledby="badges">
+          <h3 class="section-title" id="badges">Cloud Resume</h3>
+          <p class="muted" style="margin:0 0 8px 0">Status: <strong>In Progress</strong></p>
+          <p style="margin:0"><a class="inline" href="https://www.linkedin.com/in/yourprofile">View on LinkedIn</a></p>
+        </div>
+        
+        <div class="box" role="region" aria-labelledby="counter">
+          <h3 class="section-title" id="counter-title">Counter</h3>
+          <p>Visitor count: <span id="visitor-count">Loading...</span></p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+  <script>
+  const apiUrl = "https://ko54gqtos5.execute-api.us-east-1.amazonaws.com/Prod/visitor"; 
+
+  async function updateVisitorCount() {
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      document.getElementById("visitor-count").innerText = data.count;
+    } catch (err) {
+      console.error("Error fetching visitor count:", err);
+    }
+  }
+
+  
+  updateVisitorCount();
+</script>
+</body>
+</html>
